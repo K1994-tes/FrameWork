@@ -1,0 +1,6 @@
+#CommonData
+#Sat Nov 09 12:26:50 IST 2024
+browser=chrome
+password=admin
+url=http\://localhost\:8888
+username=admin

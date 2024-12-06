@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite parallel="tests" name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" parallel="tests" name="TestRunner1(failed)">
+    <classes>
+      <class name="Campiagns.CampaignsTest">
+        <methods>
+          <include name="bm"/>
+          <include name="CampaignsTest"/>
+          <include name="bs"/>
+          <include name="bc"/>
+          <include name="as"/>
+          <include name="bt"/>
+          <include name="ac"/>
+          <include name="at"/>
+          <include name="am"/>
+        </methods>
+      </class> <!-- Campiagns.CampaignsTest -->
+    </classes>
+  </test> <!-- TestRunner1(failed) -->
+</suite> <!-- Failed suite [Suite] -->
