@@ -3,11 +3,19 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="TestNG.HardAssertEx">
+      <class name="Organization.CreateOrganizationTest">
         <methods>
-          <include name="m10"/>
+          <include name="bm"/>
+          <include name="bs"/>
+          <include name="bc"/>
+          <include name="as"/>
+          <include name="bt"/>
+          <include name="ac"/>
+          <include name="at"/>
+          <include name="am"/>
+          <include name="CreateOrganizationTest"/>
         </methods>
-      </class> <!-- TestNG.HardAssertEx -->
+      </class> <!-- Organization.CreateOrganizationTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

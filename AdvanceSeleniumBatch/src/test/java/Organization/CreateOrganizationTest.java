@@ -16,7 +16,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import Generic_Utilities.BaseClass;
 import Generic_Utilities.Excel_Utility;
@@ -82,6 +85,7 @@ public class CreateOrganizationTest extends BaseClass{
 	//	driver.findElement(By.xpath("//img[@title='Create Organization...']")).click();
 		OrgDetailedPage img = new OrgDetailedPage(driver);
 		img.clickOrgLookUpImg();
+	
 //---------------------------------------------------------------------------------------------------
 		//Random Class------- generating unique values(Avoid Duplicate value)
 		//Random ran= new Random();
@@ -136,7 +140,13 @@ public class CreateOrganizationTest extends BaseClass{
 	   System.out.println("Organization is not created");
    }*/
    OrgValidatePage validate = new OrgValidatePage(driver);
-   validate.validateOrg(driver, OrgName);
+  String actData= validate.validateOrg(driver, OrgName);
+ // Assert.assertEquals(actData,OrgName);
+  SoftAssert soft = new SoftAssert();
+  soft.assertEquals(actData,OrgName);
+  soft.assertAll();
+  System.out.println("Organization name is created");
+
    
   //------------------------------------------------------------------------------------------------
  //  driver.findElement(By.cssSelector("[src=\"themes/softed/images/user.PNG\"]")).click();

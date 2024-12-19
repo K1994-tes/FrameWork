@@ -19,14 +19,14 @@ public class ProdValidatePage
 	public String validateProd(WebDriver driver,String ProdName)
 	{
 		 String actData = driver.findElement(By.xpath("//span[@id=\"dtlview_Product Name\"]")).getText();
-	        if(actData.contains(ProdName))
+	  /*      if(actData.contains(ProdName))
 	        {
 	     	   System.out.println("Product name is created");
 	        }
 	        else
 	        {
 	     	   System.out.println("Product name is not created");
-	        }
+	        }*/
 
 		return actData;
 		

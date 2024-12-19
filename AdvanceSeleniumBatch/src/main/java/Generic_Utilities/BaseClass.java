@@ -16,9 +16,12 @@ import org.testng.annotations.Parameters;
 import ObjectRepo.LoginVtigerPage;
 import ObjectRepo.VtigerHomePage;
 
+
+
 public class BaseClass 
 {
 	public WebDriver driver; //created as Global variable
+	public static WebDriver sdriver;
 	@BeforeSuite(groups = {"smoke","regression","sanity"})
 	public void bs()
 	{
@@ -31,11 +34,11 @@ public class BaseClass
 	}
 	@Parameters("BROWSER")
    @BeforeClass(groups = {"smoke","regression","sanity"})
- //  public void bc()throws Throwable{
-	//   File_Utility flib = new File_Utility();
+  public void bc()throws Throwable{
+	  File_Utility flib = new File_Utility();
 
-    //   String BROWSER = flib.getKeyAndValuePair("browser");
-	public void bc(String BROWSER) throws Throwable {
+      String BROWSER = flib.getKeyAndValuePair("browser");
+//	public void bc(String BROWSER) throws Throwable {
 	if(BROWSER.equalsIgnoreCase("chrome"))
 		{
 			driver = new ChromeDriver();
@@ -54,22 +57,23 @@ public class BaseClass
 		}
 
 	   System.out.println("launching browser");
+	   sdriver= driver;
    }
-	@Parameters({"URL","USERNAME","PASSWORD"})
+@Parameters({"URL","USERNAME","PASSWORD"})
 	 @BeforeMethod(groups = {"smoke","regression","sanity"})
-  // public void bm()throws Throwable {
-	//  System.out.println("login to application");
-	  // File_Utility flib = new File_Utility();
-	  //  String URL =flib.getKeyAndValuePair ("url");
-	//	String USERNAME =flib.getKeyAndValuePair("username");
-	//    String PASSWORD =flib.getKeyAndValuePair("password");
-	public void bm(String URL,String USERNAME,String PASSWORD ) throws Throwable {
+  public void bm()throws Throwable {
+	 System.out.println("login to application");
+	   File_Utility flib = new File_Utility();
+  String URL =flib.getKeyAndValuePair ("url");
+	  String USERNAME =flib.getKeyAndValuePair("username");
+	   String PASSWORD =flib.getKeyAndValuePair("password");
+//	public void bm(String URL,String USERNAME,String PASSWORD ) throws Throwable {
 		driver.get(URL);
 		//using business logics 
 	LoginVtigerPage login = new LoginVtigerPage(driver);
 		login.loginIntoVtiger(USERNAME,PASSWORD);
 		
-	 WebDriver_Utility wlib = new WebDriver_Utility();
+	 WebDriver_Utility wlib= new WebDriver_Utility();
 		 wlib.maximizeWindow(driver);
 			wlib.waitForPageToLoad(driver);
  }
@@ -77,13 +81,14 @@ public class BaseClass
    @AfterMethod(groups = {"smoke","regression","sanity"})
    public void am()
    {
+	   VtigerHomePage home = new VtigerHomePage(driver);
+	   home.logoutApp();
 	   System.out.println("logout from application");
    }
    @AfterClass(groups = {"smoke","regression","sanity"})
    public void ac()
    {
-	   VtigerHomePage home = new VtigerHomePage(driver);
-	   home.logoutApp();
+	   driver.quit();
 	   System.out.println("close the browser");
    }
    @AfterTest(groups = {"smoke","regression","sanity"})

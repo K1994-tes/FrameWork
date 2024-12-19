@@ -14,6 +14,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import Generic_Utilities.BaseClass;
@@ -28,7 +30,7 @@ import ObjectRepo.LoginVtigerPage;
 import ObjectRepo.ProdDetailedPage;
 import ObjectRepo.ProdValidatePage;
 import ObjectRepo.VtigerHomePage;
-
+//@Listeners(Generic_Utilities.Listener.class)
 public class CreateProductTest extends BaseClass{
 @Test(groups="sanity")
 	public void createProductTest() throws Throwable
@@ -90,6 +92,7 @@ public class CreateProductTest extends BaseClass{
 //		WebDriver_Utility wlib = new WebDriver_Utility();
 //		wlib.maximizeWindow(driver);
 //		wlib.waitForPageToLoad(driver);
+	//	Assert.fail("fail the script");
 		
 //---------------------------------------------------------------------------------------------------
 		//Random ran= new Random();
@@ -125,7 +128,9 @@ public class CreateProductTest extends BaseClass{
      	   System.out.println("Product name is not created");
         }*/
        ProdValidatePage validate = new ProdValidatePage(driver);
-       validate.validateProd(driver, ProdName);
+      String actData= validate.validateProd(driver, ProdName);
+      Assert.assertEquals(actData,ProdName);
+      System.out.println("Product name is created");
 //-----------------------------------------------------------------------------------------------------
      //   driver.findElement(By.cssSelector("[src=\"themes/softed/images/user.PNG\"]")).click();
      //   driver.findElement(By.linkText("Sign Out")).click();

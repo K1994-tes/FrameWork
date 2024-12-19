@@ -88,9 +88,13 @@ public void m11()
 {
 	String s="hell";
 	String s1="hello";
-	Assert.assertSame(s, s1,"same");
+	Assert.assertNotSame(s, s1,"same");
 	System.out.println("it is not same");
 }
-
+@Test
+public void m12()
+{
+	Assert.fail("I'm failing the TestScript");
+}
 
 }

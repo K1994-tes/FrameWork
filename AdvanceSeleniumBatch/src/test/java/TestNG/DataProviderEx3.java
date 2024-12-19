@@ -39,7 +39,7 @@ public class DataProviderEx3 {
 		driver.quit();
 	}
 	@DataProvider
-	public Object[][] readData() throws Throwable
+	public Object[][] readData() throws Throwable 
 	{
 	Excel_Utility elib = new Excel_Utility();	
 	Object[][] values = elib.readExcelFromDataProvider("DataProvider");
