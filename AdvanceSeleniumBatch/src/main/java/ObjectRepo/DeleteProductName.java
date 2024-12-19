@@ -28,7 +28,7 @@ public class DeleteProductName
 	{
 		DeleteButton.click(); 
 	}
-	public void validateProdDeleted(WebDriver driver,String ProdName)
+	public String validateProdDeleted(WebDriver driver,String ProdName)
 	{
 		List<WebElement> allProd  =	 driver.findElements(By.xpath("(//table[@class='lvt small']/tbody/tr/td[3])[position()>1]"));
      	boolean flag=false;
@@ -40,15 +40,19 @@ public class DeleteProductName
      			flag=true;
      			break;
      		}
+     		
      	}
-     	if(flag)
-     	{
-     		System.out.println("product name is deleted");
-     	}
-     	else
-     	{
-     		System.out.println("product name is not deleted");
-     	}
-
+     //	if(flag)
+    // 	{
+    // 		System.out.println("product name is deleted");
+    // 	}
+     //	else
+     //	{
+     //		System.out.println("product name is not deleted");
+     //	}
+		return ProdName;
+		
+     	
+		
 	}
 }

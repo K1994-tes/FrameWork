@@ -68,10 +68,16 @@ public class VtigerHomePage
 			admLink.click();
 			signOut.click();
 		}
+		/**
+		 * this method is used to click on organization link
+		 */
 		public void clickOrgLink()
 		{
 			orgLink.click();
 		}
+		/**
+		 * this method is used to click on Product link
+		 */
 		
 		public void clickPrdLink()
 		{

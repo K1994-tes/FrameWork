@@ -1,43 +1,25 @@
 package Campiagns;
 
-import java.io.FileInputStream;
-import java.time.Duration;
-import java.util.Properties;
-import java.util.Random;
-
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.ss.usermodel.WorkbookFactory;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import Generic_Utilities.BaseClass;
 import Generic_Utilities.Excel_Utility;
-import Generic_Utilities.File_Utility;
 import Generic_Utilities.Java_Utility;
-import Generic_Utilities.WebDriver_Utility;
 import ObjectRepo.CampDetailedPage;
 import ObjectRepo.CampValidatePage;
 import ObjectRepo.CreateCampPage;
-import ObjectRepo.CreateProdPage;
-import ObjectRepo.LoginVtigerPage;
-import ObjectRepo.ProdDetailedPage;
-import ObjectRepo.ProdValidatePage;
 import ObjectRepo.VtigerHomePage;
 
+//@Listeners(Generic_Utilities.Listener.class)
+//@Listeners(Generic_Utilities.ExtentReport.class)
 public class CampaignsTest extends BaseClass {
 
 	@Test(groups = {"smoke","regression"})
-
-	public void CampaignsTest() throws Throwable
+  // @Test(retryAnalyzer = Generic_Utilities.RetryImp.class)
+//	@Test
+	public void campaignsTest() throws Throwable
 	{
 
 		
@@ -114,6 +96,7 @@ public class CampaignsTest extends BaseClass {
 		CreateCampPage createPage = new CreateCampPage(driver);
 		createPage.enterCampName(cpgName);
 		createPage.clickSaveButton();
+	//	Assert.fail();
 //---------------------------------------------------------------------------------------------------
         Thread.sleep(2000);
   //      String actData = driver.findElement(By.xpath("//span[@id='dtlview_Campaign Name']")).getText();
@@ -125,8 +108,12 @@ public class CampaignsTest extends BaseClass {
     //    {
     // 	   System.out.println("Campaigns is not created");
       //  }
+        
         CampValidatePage validate = new CampValidatePage(driver);
-		validate.validateCampaign(driver, cpgName);
+		String actData=validate.validateCampaign(driver, cpgName);
+    	Assert.assertEquals(actData,cpgName);
+	//	Assert.fail("fail the script");
+		System.out.println("Campagin Name is created");
 		
   //      driver.findElement(By.cssSelector("[src=\"themes/softed/images/user.PNG\"]")).click();
   //      driver.findElement(By.linkText("Sign Out")).click();

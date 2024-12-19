@@ -45,7 +45,7 @@ public void createOrganization(String name, String phnNum, String mailId) throws
 	
 }
 @DataProvider
-public Object[][] readData() throws Throwable
+public Object[][] readData() 
 {
 	Random ran = new Random();
 	int ranNum = ran.nextInt(1000);

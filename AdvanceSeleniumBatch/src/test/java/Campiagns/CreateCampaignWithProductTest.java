@@ -18,6 +18,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import Generic_Utilities.BaseClass;
@@ -217,8 +218,14 @@ public class CreateCampaignWithProductTest extends BaseClass{
            	   System.out.println("Product name is not created");
               }*/
         ValidateCampiagnsWithProduct validate = new ValidateCampiagnsWithProduct(driver);
-        validate.validateCampName(driver, cpgName);
-        validate.validateProdName(driver, ProdName);
+  String actData =      validate.validateCampName(driver, cpgName);
+  Assert.assertEquals(actData,cpgName);
+  System.out.println("Campiagns name is created");
+
+   String actData1=validate.validateProdName(driver, ProdName);
+   Assert.assertEquals(actData1,ProdName);
+   System.out.println("Product name is created");
+
 //-----------------------------------------------------------------------------------------------------
           //    driver.findElement(By.cssSelector("[src=\"themes/softed/images/user.PNG\"]")).click();
           //    driver.findElement(By.linkText("Sign Out")).click();

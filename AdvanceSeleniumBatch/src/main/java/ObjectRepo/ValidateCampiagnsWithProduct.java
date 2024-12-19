@@ -10,7 +10,7 @@ public class ValidateCampiagnsWithProduct
 	{
 		PageFactory.initElements(driver, this);
 	}
-	public void validateCampName(WebDriver driver,String CampName)
+	public String validateCampName(WebDriver driver,String CampName)
 	{
 		   String actData = driver.findElement(By.xpath("//span[@id='dtlview_Campaign Name']")).getText();
            if(actData.contains(CampName))
@@ -21,8 +21,9 @@ public class ValidateCampiagnsWithProduct
            {
         	   System.out.println("Campaigns is not created");
            }
+		return actData;
 	}
-           public void validateProdName(WebDriver driver,String PrdName)
+           public String validateProdName(WebDriver driver,String PrdName)
            {
         	   String actData1 = driver.findElement(By.xpath("//span[@id='dtlview_Product']")).getText();
                if(actData1.contains(PrdName))
@@ -33,6 +34,7 @@ public class ValidateCampiagnsWithProduct
                {
             	   System.out.println("Product name is not created");
                }
+			return actData1;
            }
 	}
 

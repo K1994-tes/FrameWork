@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite parallel="tests" name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" parallel="tests" name="TestRunner1(failed)">
+<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <listeners>
+    <listener class-name="Generic_Utilities.Listener"/>
+  </listeners>
+  <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="Campiagns.CampaignsTest">
+      <class name="Product.VerifyProductIsDeletedTest">
         <methods>
           <include name="bm"/>
-          <include name="CampaignsTest"/>
+          <include name="VerifyProductIsDeletedTest"/>
           <include name="bs"/>
           <include name="bc"/>
           <include name="as"/>
@@ -15,7 +18,7 @@
           <include name="at"/>
           <include name="am"/>
         </methods>
-      </class> <!-- Campiagns.CampaignsTest -->
+      </class> <!-- Product.VerifyProductIsDeletedTest -->
     </classes>
-  </test> <!-- TestRunner1(failed) -->
+  </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->
